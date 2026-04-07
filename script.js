@@ -1,14 +1,35 @@
 
 console.log("script started");
 
+//var to track current number 
+let currentNum = 1;
+let level = 1;
+
 function start() {
     console.log("clicking clicking");
     setTimeout(createCircle, 250, 1);
     setTimeout(createCircle, 500, 2);
     setTimeout(createCircle, 1000, 3)
-    
+    startLevel1();
 }
 
+function startLevel1() {
+    currentNum = 1;
+    level = 1;
+    setTimeout(createCircle, 250, 1);
+    setTimeout(createCircle, 500, 2);
+    setTimeout(createCircle, 1000, 3)
+}
+
+function startLevel2() {
+    currentNum = 1;
+    level = 2;
+    setTimeout(createCircle, 250, 1);
+    setTimeout(createCircle, 500, 2);
+    setTimeout(createCircle, 1000, 3)
+    setTimeout(createCircle, 1250, 4);
+    setTimeout(createCircle, 1500, 5);
+}
 function createCircle(num) {
     //create a div fir the circle 
     let circle = document.createElement("div");
@@ -38,7 +59,7 @@ function createCircle(num) {
     document.body.appendChild(circle);
 
     //make it clickable 
-    Element.addEventListener("click", checkForRemove);
+    circle.addEventListener("click", checkForRemove);
 }
 
 function getRandomX() {
@@ -54,8 +75,18 @@ function getRandomY() {
 //check for the right choice and remove it
 
 function checkForRemove(event) {
-    console.log(circle.innertText);
     let circle = event.target;
+    console.log(circle.innertText);
+    if (circle.innerText == currentNum) {
+        circle.remove();
+        currentNum++;
+        if (currentNum == 4 && level == 1) {
+            startLevel2();
+        }
+        else if (currentNum == 6 && level == 2) {
+            startLevel2();
+        }
+    }
 
 
 
