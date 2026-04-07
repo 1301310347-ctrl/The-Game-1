@@ -7,9 +7,7 @@ let level = 1;
 
 function start() {
     console.log("clicking clicking");
-    setTimeout(createCircle, 250, 1);
-    setTimeout(createCircle, 500, 2);
-    setTimeout(createCircle, 1000, 3)
+    
     startLevel1();
 }
 
